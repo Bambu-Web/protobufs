@@ -1,0 +1,196 @@
+syntax = "proto3";
+
+package bambu.printer.v1;
+
+import "google/protobuf/any.proto";
+
+message Print {
+  message Ams {
+    repeated google.protobuf.Any ams = 1;
+    string ams_exist_bits = 2;
+    bool insert_flag = 3;
+    bool power_on_flag = 4;
+    string tray_exist_bits = 5;
+    string tray_is_bbl_bits = 6;
+    string tray_now = 7;
+    string tray_pre = 8;
+    string tray_read_done_bits = 9;
+    string tray_reading_bits = 10;
+    string tray_tar = 11;
+    uint32 version = 12;
+  }
+
+  message Ipcam {
+    string ipcam_dev = 1;
+    string ipcam_record = 2;
+    uint32 mode_bits = 3;
+    string resolution = 4;
+    string rtsp_url = 5;
+    string timelapse = 6;
+    string tutk_server = 7;
+  }
+
+  message Lights_report {
+    string mode = 1;
+    string node = 2;
+  }
+
+  message Info {
+    uint32 ip = 1;
+    uint32 mask = 2;
+  }
+
+  message Net {
+    uint32 conf = 1;
+    repeated Info info = 2;
+  }
+
+  message Online {
+    bool ahb = 1;
+    bool ext = 2;
+    uint32 version = 3;
+  }
+
+  message Upgrade_state {
+    string ahb_new_version_number = 1;
+    string ams_new_version_number = 2;
+    bool consistency_request = 3;
+    uint32 dis_state = 4;
+    uint32 err_code = 5;
+    string ext_new_version_number = 6;
+    bool force_upgrade = 7;
+    uint32 idx = 8;
+    string message = 9;
+    string module = 10;
+    uint32 new_version_state = 11;
+    string ota_new_version_number = 12;
+    string progress = 13;
+    uint32 sequence_id = 14;
+    string sn = 15;
+    string status = 16;
+  }
+
+  message Upload {
+    uint32 file_size = 1;
+    uint32 finish_size = 2;
+    string message = 3;
+    string oss_url = 4;
+    uint32 progress = 5;
+    string sequence_id = 6;
+    uint32 speed = 7;
+    string status = 8;
+    string task_id = 9;
+    uint32 time_remaining = 10;
+    string trouble_id = 11;
+  }
+
+  message Vt_tray {
+    string bed_temp = 1;
+    string bed_temp_type = 2;
+    int32 cali_idx = 3;
+    repeated string cols = 4;
+    uint32 ctype = 5;
+    string drying_temp = 6;
+    string drying_time = 7;
+    string id = 8;
+    string nozzle_temp_max = 9;
+    string nozzle_temp_min = 10;
+    uint32 remain = 11;
+    string tag_uid = 12;
+    string tray_color = 13;
+    string tray_diameter = 14;
+    string tray_id_name = 15;
+    string tray_info_idx = 16;
+    string tray_sub_brands = 17;
+    string tray_type = 18;
+    string tray_uuid = 19;
+    string tray_weight = 20;
+    string xcam_info = 21;
+  }
+
+  message Xcam {
+    bool allow_skip_parts = 1;
+    bool buildplate_marker_detector = 2;
+    bool first_layer_inspector = 3;
+    string halt_print_sensitivity = 4;
+    bool print_halt = 5;
+    bool printing_monitor = 6;
+    bool spaghetti_detector = 7;
+  }
+
+  message Print {
+    Ams ams = 1;
+    uint32 ams_rfid_status = 2;
+    uint32 ams_status = 3;
+    bool aux_part_fan = 4;
+    double bed_target_temper = 5;
+    double bed_temper = 6;
+    string big_fan1_speed = 7;
+    string big_fan2_speed = 8;
+    uint32 cali_version = 9;
+    double chamber_temper = 10;
+    string command = 11;
+    string cooling_fan_speed = 12;
+    uint32 ctt = 13;
+    string fail_reason = 14;
+    uint32 fan_gear = 15;
+    repeated google.protobuf.Any filam_bak = 16;
+    bool force_upgrade = 17;
+    string gcode_file = 18;
+    string gcode_file_prepare_percent = 19;
+    string gcode_start_time = 20;
+    string gcode_state = 21;
+    string heatbreak_fan_speed = 22;
+    repeated google.protobuf.Any hms = 23;
+    uint32 home_flag = 24;
+    uint32 hw_switch_state = 25;
+    Ipcam ipcam = 26;
+    string job_id = 27;
+    uint32 layer_num = 28;
+    string lifecycle = 29;
+    repeated Lights_report lights_report = 30;
+    uint32 maintain = 31;
+    uint32 mc_percent = 32;
+    string mc_print_error_code = 33;
+    string mc_print_stage = 34;
+    uint32 mc_print_sub_stage = 35;
+    uint32 mc_remaining_time = 36;
+    string mess_production_state = 37;
+    Net net = 38;
+    string nozzle_diameter = 39;
+    double nozzle_target_temper = 40;
+    double nozzle_temper = 41;
+    string nozzle_type = 42;
+    Online online = 43;
+    uint32 print_error = 44;
+    uint32 print_gcode_action = 45;
+    uint32 print_real_action = 46;
+    string print_type = 47;
+    string profile_id = 48;
+    string project_id = 49;
+    uint32 queue_est = 50;
+    uint32 queue_number = 51;
+    uint32 queue_sts = 52;
+    uint32 queue_total = 53;
+    repeated google.protobuf.Any s_obj = 54;
+    bool sdcard = 55;
+    string sequence_id = 56;
+    uint32 spd_lvl = 57;
+    uint32 spd_mag = 58;
+    repeated uint32 stg = 59;
+    uint32 stg_cur = 60;
+    string subtask_id = 61;
+    string subtask_name = 62;
+    string task_id = 63;
+    uint32 total_layer_num = 64;
+    Upgrade_state upgrade_state = 65;
+    Upload upload = 66;
+    Vt_tray vt_tray = 67;
+    string wifi_signal = 68;
+    Xcam xcam = 69;
+    string xcam_status = 70;
+  }
+
+  Print print = 1;
+  string name = 2;
+}

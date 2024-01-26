@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package bambu.printer.v1;
+
+import "google/protobuf/empty.proto";
+import "printer/v1/status.proto";
+
+service PrinterService {
+  rpc GetPrinters(google.protobuf.Empty) returns (GetPrintersResponse) {}
+}
+
+message GetPrintersResponse {
+  repeated Printer printers = 1;
+}
